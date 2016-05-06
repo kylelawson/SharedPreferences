@@ -41,10 +41,25 @@ public class MainActivity extends AppCompatActivity {
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                //Make an editor so that the preferences can be edited
                 SharedPreferences.Editor editor = mSharedPreferences.edit();
+
+                //Remove the key from the file, since this is the key that the app checks for
+                //When it checks if there is data, the app will default to its starting screen
+                //Like before the user entered anything
                 editor.remove("key");
+
+                //This commits the action done with the editor to the file, apply() can be used instead
+                //to run it in the background but because this is one key of a very small size
+                //commit() is no big deal.
                 editor.commit();
+
+                //Clear the EditText field to show the user the data has been deleted
                 mEditText.setText(null);
+
+                //A notification saying the same. This and the .setText(null) are ways to make the
+                //user experience better. Never let them guess at whether the app did something or not
                 Toast.makeText(getApplicationContext(), "Shared Preferences Cleared", Toast.LENGTH_SHORT).show();
             }
         });
@@ -92,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
              * the name of the key in order to pull its value and a default string if the value is
              * null
              */
-            editableText.setText(passedSharedPreference.getString("key", "Default String").toString());
+            editableText.setText(passedSharedPreference.getString("key", "Default String"));
         }
     }
 }
