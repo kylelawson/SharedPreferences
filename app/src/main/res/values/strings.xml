@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">SharedPreferences</string>
+    <string name="button_text">Save Data</string>
+    <string name="button2_text">Delete Data</string>
+    <string name="example_text">This is some text that can be saved. You can save any primitive type
+    in shared preferences (String, int, boolean)</string>
+</resources>
